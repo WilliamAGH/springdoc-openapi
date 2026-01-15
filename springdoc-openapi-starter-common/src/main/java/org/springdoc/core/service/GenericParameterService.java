@@ -26,9 +26,9 @@
 
 package org.springdoc.core.service;
 
-import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import tools.jackson.core.JacksonException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
@@ -304,7 +304,7 @@ public class GenericParameterService {
 			try {
 				parameter.setExample(objectMapperProvider.jsonMapper().readTree(parameterDoc.example()));
 			}
-			catch (IOException e) {
+			catch (JacksonException e) {
 				parameter.setExample(parameterDoc.example());
 			}
 		}

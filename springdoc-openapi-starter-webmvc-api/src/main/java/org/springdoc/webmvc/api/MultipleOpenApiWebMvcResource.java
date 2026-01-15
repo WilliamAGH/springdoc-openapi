@@ -87,13 +87,13 @@ public class MultipleOpenApiWebMvcResource extends MultipleOpenApiResource {
 	 * @param group      the group
 	 * @param locale     the locale
 	 * @return the string
-	 * @throws JsonProcessingException the json processing exception
+	 * @throws JacksonException the json processing exception
 	 */
 	@Operation(hidden = true)
 	@GetMapping(value = API_DOCS_URL + "/{group}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public byte[] openapiJson(HttpServletRequest request, @Value(API_DOCS_URL) String apiDocsUrl,
 			@PathVariable String group, Locale locale)
-			throws JsonProcessingException {
+			throws JacksonException {
 		return getOpenApiResourceOrThrow(group).openapiJson(request, apiDocsUrl + DEFAULT_PATH_SEPARATOR + group, locale);
 	}
 
@@ -105,13 +105,13 @@ public class MultipleOpenApiWebMvcResource extends MultipleOpenApiResource {
 	 * @param group      the group
 	 * @param locale     the locale
 	 * @return the string
-	 * @throws JsonProcessingException the json processing exception
+	 * @throws JacksonException the json processing exception
 	 */
 	@Operation(hidden = true)
 	@GetMapping(value = DEFAULT_API_DOCS_URL_YAML + "/{group}", produces = APPLICATION_OPENAPI_YAML)
 	public byte[] openapiYaml(HttpServletRequest request, @Value(DEFAULT_API_DOCS_URL_YAML) String apiDocsUrl,
 			@PathVariable String group, Locale locale)
-			throws JsonProcessingException {
+			throws JacksonException {
 		return getOpenApiResourceOrThrow(group).openapiYaml(request, apiDocsUrl + DEFAULT_PATH_SEPARATOR + group, locale);
 	}
 

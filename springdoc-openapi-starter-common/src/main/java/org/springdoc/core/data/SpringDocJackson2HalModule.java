@@ -43,7 +43,7 @@ public class SpringDocJackson2HalModule extends SimpleModule {
 	public static boolean isAlreadyRegisteredIn(ObjectMapper mapper) {
 
 		Assert.notNull(mapper, "ObjectMapper must not be null!");
-		return LinkMixin.class.equals(mapper.findMixInClassFor(Link.class));
+		return LinkMixin.class.equals(mapper.serializationConfig().findMixInClassFor(Link.class));
 	}
 	
 

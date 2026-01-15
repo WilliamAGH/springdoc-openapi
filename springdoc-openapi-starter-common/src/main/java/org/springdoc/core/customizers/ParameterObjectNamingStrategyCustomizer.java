@@ -29,7 +29,8 @@ package org.springdoc.core.customizers;
 import java.lang.reflect.Field;
 
 import tools.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.util.NamingStrategyImpls;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,8 +59,7 @@ public class ParameterObjectNamingStrategyCustomizer implements DelegatingMethod
 					Field parameterNameField = FieldUtils.getDeclaredField(methodParameter.getClass(), "parameterName",
 							true);
 					parameterNameField.set(methodParameter,
-							PropertyNamingStrategies.UpperSnakeCaseStrategy.INSTANCE.translate(
-									methodParameter.getParameterName()));
+							NamingStrategyImpls.UPPER_SNAKE_CASE.translate(methodParameter.getParameterName()));
 				}
 				catch (IllegalAccessException e) {
 					LOGGER.warn(e.getMessage());

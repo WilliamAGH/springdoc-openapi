@@ -26,9 +26,9 @@
 
 package org.springdoc.core.utils;
 
-import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import tools.jackson.core.JacksonException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -483,7 +483,7 @@ public class SpringDocAnnotationsUtils extends AnnotationsUtils {
 			try {
 				defaultValue = objectMapper.readTree(defaultValueStr);
 			}
-			catch (IOException e) {
+			catch (JacksonException e) {
 				defaultValue = defaultValueStr;
 			}
 		}

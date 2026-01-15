@@ -105,7 +105,7 @@ public class HateoasHalProvider implements InitializingBean {
 		}
 		var mapper = objectMapperProvider.jsonMapper();
 		if (!SpringDocJackson2HalModule.isAlreadyRegisteredIn(mapper)) {
-			mapper.registerModule(new SpringDocJackson2HalModule());
+			objectMapperProvider.registerModule(new SpringDocJackson2HalModule());
 		}
 	}
 }

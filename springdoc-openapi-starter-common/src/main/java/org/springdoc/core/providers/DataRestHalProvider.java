@@ -64,7 +64,7 @@ public class DataRestHalProvider extends HateoasHalProvider implements Initializ
 		if (!isHalEnabled())
 			return;
 		if (!SpringDocJackson2HalModule.isAlreadyRegisteredIn(objectMapperProvider.jsonMapper()))
-			objectMapperProvider.jsonMapper().registerModule(new SpringDocJackson2HalModule());
+			objectMapperProvider.registerModule(new SpringDocJackson2HalModule());
 	}
 
 	@Override

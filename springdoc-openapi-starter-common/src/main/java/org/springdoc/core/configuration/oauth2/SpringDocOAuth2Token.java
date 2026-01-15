@@ -27,7 +27,7 @@
 package org.springdoc.core.configuration.oauth2;
 
 import tools.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import tools.jackson.databind.annotation.JsonNaming;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**

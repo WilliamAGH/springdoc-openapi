@@ -85,12 +85,12 @@ public class MultipleOpenApiActuatorResource extends MultipleOpenApiResource {
 	 * @param group   the group
 	 * @param locale  the locale
 	 * @return the string
-	 * @throws JsonProcessingException the json processing exception
+	 * @throws JacksonException the json processing exception
 	 */
 	@Operation(hidden = true)
 	@GetMapping(value = "/{group}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public byte[] openapiJson(HttpServletRequest request, @PathVariable String group, Locale locale)
-			throws JsonProcessingException {
+			throws JacksonException {
 		return getOpenApiResourceOrThrow(group).openapiJson(request, "" + DEFAULT_PATH_SEPARATOR + group, locale);
 	}
 
@@ -101,12 +101,12 @@ public class MultipleOpenApiActuatorResource extends MultipleOpenApiResource {
 	 * @param group   the group
 	 * @param locale  the locale
 	 * @return the string
-	 * @throws JsonProcessingException the json processing exception
+	 * @throws JacksonException the json processing exception
 	 */
 	@Operation(hidden = true)
 	@GetMapping(value = "/{group}/yaml", produces = APPLICATION_OPENAPI_YAML)
 	public byte[] openapiYaml(HttpServletRequest request, @PathVariable String group, Locale locale)
-			throws JsonProcessingException {
+			throws JacksonException {
 		return getOpenApiResourceOrThrow(group).openapiYaml(request, "" + DEFAULT_PATH_SEPARATOR + group, locale);
 	}
 

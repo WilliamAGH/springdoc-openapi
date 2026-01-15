@@ -1187,8 +1187,8 @@ public class DataRestDelegatingMethodParameterCustomizer implements DelegatingMe
 				try {
 					defaultValue = ObjectMapperFactory.buildStrictGenericObjectMapper().writeValueAsString(sortValues);
 				}
-				catch (JsonProcessingException e) {
-					LOGGER.warn(e.getMessage());
+				catch (JacksonException e) {
+					throw new IllegalStateException("Failed to serialize sort defaults", e);
 				}
 			}
 		}

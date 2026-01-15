@@ -120,11 +120,11 @@ public abstract class OpenApiResource extends AbstractOpenApiResource {
 	 * @param apiDocsUrl the api docs url
 	 * @param locale     the locale
 	 * @return the string
-	 * @throws JsonProcessingException the json processing exception
+	 * @throws JacksonException the json processing exception
 	 */
 	public byte[] openapiJson(HttpServletRequest request,
 			String apiDocsUrl, Locale locale)
-			throws JsonProcessingException {
+			throws JacksonException {
 		String serverBaseUrl = calculateServerUrl(request, apiDocsUrl, locale);
 		OpenAPI openAPI = this.getOpenApi(serverBaseUrl, locale);
 		return writeJsonValue(openAPI);
@@ -137,11 +137,11 @@ public abstract class OpenApiResource extends AbstractOpenApiResource {
 	 * @param apiDocsUrl the api docs url
 	 * @param locale     the locale
 	 * @return the string
-	 * @throws JsonProcessingException the json processing exception
+	 * @throws JacksonException the json processing exception
 	 */
 	public byte[] openapiYaml(HttpServletRequest request,
 			String apiDocsUrl, Locale locale)
-			throws JsonProcessingException {
+			throws JacksonException {
 		String serverBaseUrl = calculateServerUrl(request, apiDocsUrl, locale);
 		OpenAPI openAPI = this.getOpenApi(serverBaseUrl, locale);
 		return writeYamlValue(openAPI);

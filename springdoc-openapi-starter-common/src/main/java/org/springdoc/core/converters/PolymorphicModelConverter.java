@@ -39,7 +39,9 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import tools.jackson.databind.JavaType;
+import tools.jackson.databind.deser.DeserializationContextExt;
 import tools.jackson.databind.introspect.BeanPropertyDefinition;
+import tools.jackson.databind.ser.SerializationContextExt;
 import io.swagger.v3.core.converter.AnnotatedType;
 import io.swagger.v3.core.converter.ModelConverter;
 import io.swagger.v3.core.converter.ModelConverterContext;
@@ -228,17 +230,17 @@ public class PolymorphicModelConverter implements ModelConverter {
 	 * and pairs them into a list of {@code BeanPropertyBiDefinition}.
 	 */
 	private List<BeanPropertyBiDefinition> introspectBeanProperties(JavaType javaType) {
+		SerializationContextExt serializationContext = springDocObjectMapper.jsonMapper()._serializationContext();
 		Map<String, BeanPropertyDefinition> forSerializationProps =
-				springDocObjectMapper.jsonMapper()
-						.getSerializationConfig()
-						.introspect(javaType)
+				serializationContext
+						.introspectBeanDescription(javaType)
 						.findProperties()
 						.stream()
 						.collect(toMap(BeanPropertyDefinition::getName, identity()));
+		DeserializationContextExt deserializationContext = springDocObjectMapper.jsonMapper()._deserializationContext();
 		Map<String, BeanPropertyDefinition> forDeserializationProps =
-				springDocObjectMapper.jsonMapper()
-						.getDeserializationConfig()
-						.introspect(javaType)
+				deserializationContext
+						.introspectBeanDescription(javaType)
 						.findProperties()
 						.stream()
 						.collect(toMap(BeanPropertyDefinition::getName, identity()));
