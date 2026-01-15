@@ -64,11 +64,20 @@
 		<spring-security-oauth2-authorization-server.version>2.0.0-M2
 		</spring-security-oauth2-authorization-server.version>
 		<scalar.version>0.5.8</scalar.version>
+		<jackson-bom.version>3.0.3</jackson-bom.version>
 		<skipPublishing>false</skipPublishing>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Jackson 3 BOM -->
+			<dependency>
+				<groupId>tools.jackson</groupId>
+				<artifactId>jackson-bom</artifactId>
+				<version>${jackson-bom.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<!-- swagger dependencies -->
 			<dependency>
 				<groupId>io.swagger.core.v3</groupId>
@@ -264,6 +273,14 @@
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
 			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<name>JitPack</name>
+			<url>https://jitpack.io</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
