@@ -19,11 +19,13 @@
 		<dependency>
 			<groupId>tools.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-bom.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>tools.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-bom.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
