@@ -28,7 +28,7 @@ package test.org.springdoc.api.v31.app130;
 
 import java.time.Instant;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import tools.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 

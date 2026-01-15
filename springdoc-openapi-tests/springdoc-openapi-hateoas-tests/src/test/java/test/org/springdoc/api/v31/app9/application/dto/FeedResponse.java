@@ -29,7 +29,7 @@ package test.org.springdoc.api.v31.app9.application.dto;
 import java.util.List;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import tools.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import test.org.springdoc.api.v31.app9.application.FooController;
 

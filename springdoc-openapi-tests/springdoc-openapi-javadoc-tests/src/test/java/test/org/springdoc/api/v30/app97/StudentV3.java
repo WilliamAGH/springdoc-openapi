@@ -26,7 +26,7 @@
 
 package test.org.springdoc.api.v30.app97;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import tools.jackson.annotation.JsonProperty;
 
 /**
  * The type Student v 3.

@@ -26,7 +26,7 @@
 
 package test.org.springdoc.api.v30.app159;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import tools.jackson.annotation.JsonView;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -26,8 +26,8 @@
 
 package test.org.springdoc.api.v31.app127;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import tools.jackson.annotation.JsonSubTypes;
+import tools.jackson.annotation.JsonTypeInfo;
 
 /**
  * The type Abstract object.

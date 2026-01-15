@@ -26,7 +26,7 @@
 
 package test.org.springdoc.api.v30.app54;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import tools.jackson.annotation.JsonView;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

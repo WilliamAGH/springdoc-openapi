@@ -28,7 +28,7 @@ package test.org.springdoc.api.v31.app5.entities;
 
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import tools.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 
 import org.springframework.hateoas.Link;

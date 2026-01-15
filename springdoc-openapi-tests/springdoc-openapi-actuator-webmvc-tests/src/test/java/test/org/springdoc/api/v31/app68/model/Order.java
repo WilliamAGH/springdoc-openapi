@@ -28,9 +28,9 @@ package test.org.springdoc.api.v31.app68.model;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
+import tools.jackson.annotation.JsonCreator;
+import tools.jackson.annotation.JsonProperty;
+import tools.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public class Order {

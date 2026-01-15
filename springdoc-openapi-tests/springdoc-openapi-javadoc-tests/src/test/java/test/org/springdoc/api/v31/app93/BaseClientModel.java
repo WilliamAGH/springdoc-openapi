@@ -26,7 +26,7 @@
 
 package test.org.springdoc.api.v31.app93;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import tools.jackson.annotation.JsonProperty;
 
 /**
  * The type Base client model.

@@ -26,7 +26,7 @@
 
 package test.org.springdoc.api.v30.app20;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import tools.jackson.annotation.JsonIgnore;
 
 public interface EntityDefinition {
 

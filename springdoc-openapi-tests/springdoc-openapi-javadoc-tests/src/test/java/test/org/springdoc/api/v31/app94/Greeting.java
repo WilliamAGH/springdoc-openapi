@@ -26,7 +26,7 @@
 
 package test.org.springdoc.api.v31.app94;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import tools.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**

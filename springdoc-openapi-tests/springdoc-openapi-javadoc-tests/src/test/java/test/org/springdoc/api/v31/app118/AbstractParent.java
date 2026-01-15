@@ -26,10 +26,10 @@
 
 package test.org.springdoc.api.v31.app118;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import tools.jackson.annotation.JsonSubTypes;
+import tools.jackson.annotation.JsonSubTypes.Type;
+import tools.jackson.annotation.JsonTypeInfo;
+import tools.jackson.annotation.JsonTypeInfo.Id;
 
 /**
  * The type Abstract parent.

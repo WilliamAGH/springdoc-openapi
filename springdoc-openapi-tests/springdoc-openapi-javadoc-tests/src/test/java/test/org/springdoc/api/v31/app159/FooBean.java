@@ -26,7 +26,7 @@
 
 package test.org.springdoc.api.v31.app159;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import tools.jackson.annotation.JsonView;
 
 /**
  * The type Foo bean.

@@ -29,7 +29,7 @@ package test.org.springdoc.api.v30.app54;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import tools.jackson.annotation.JsonView;
 
 /**
  * The type Meal party.

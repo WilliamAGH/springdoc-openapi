@@ -1,6 +1,6 @@
 package test.org.springdoc.api.v31.app11.model;
 
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import tools.jackson.annotation.JsonUnwrapped;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Represents a Cat class.")
