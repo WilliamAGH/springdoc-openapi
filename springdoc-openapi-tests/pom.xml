@@ -13,6 +13,20 @@
 	<properties>
 		<skipPublishing>true</skipPublishing>
 	</properties>
+
+	<dependencies>
+		<!-- Jackson 3 annotations for test classes -->
+		<dependency>
+			<groupId>tools.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>tools.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 	
 	<modules>
 		<module>springdoc-openapi-security-tests</module>
