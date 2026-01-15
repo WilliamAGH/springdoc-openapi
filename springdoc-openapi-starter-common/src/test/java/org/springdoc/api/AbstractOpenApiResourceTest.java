@@ -52,6 +52,7 @@ import org.springdoc.core.customizers.ServerBaseUrlCustomizer;
 import org.springdoc.core.customizers.SpringDocCustomizers;
 import org.springdoc.core.fn.RouterOperation;
 import org.springdoc.core.properties.SpringDocConfigProperties;
+import org.springdoc.core.providers.ObjectMapperProvider;
 import org.springdoc.core.providers.SpringDocProviders;
 import org.springdoc.core.service.AbstractRequestService;
 import org.springdoc.core.service.GenericResponseService;
@@ -112,6 +113,8 @@ class AbstractOpenApiResourceTest {
 	@Mock
 	private ApplicationContext context;
 
+	private ObjectMapperProvider objectMapperProvider;
+
 	private OpenAPI openAPI;
 
 	private AbstractOpenApiResource resource;
@@ -129,7 +132,9 @@ class AbstractOpenApiResourceTest {
         doAnswer(new CallsRealMethods()).when(openAPIService).setServersPresent(false);
 
 		when(openAPIBuilderObjectFactory.getObject()).thenReturn(openAPIService);
+		objectMapperProvider = new ObjectMapperProvider(new SpringDocConfigProperties());
 		when(springDocProviders.jsonMapper()).thenReturn(Json.mapper());
+		when(springDocProviders.getObjectMapperProvider()).thenReturn(objectMapperProvider);
 	}
 
 	@Test
