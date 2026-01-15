@@ -6,4 +6,4 @@ before_install:
   - sdk use maven 3.9.9
 
 install:
-  - mvn clean install -DskipTests -P !ci -pl springdoc-openapi-starter-common,springdoc-openapi-starter-webmvc-api,springdoc-openapi-starter-webflux-api,springdoc-openapi-starter-webmvc-ui,springdoc-openapi-starter-webflux-ui,springdoc-openapi-starter-webmvc-scalar,springdoc-openapi-starter-webflux-scalar,springdoc-openapi-bom
+  - mvn clean install -DskipTests
