@@ -1,8 +1,8 @@
 package org.springdoc.core.data;
 
-import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import tools.jackson.core.Version;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.module.SimpleModule;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;

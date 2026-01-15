@@ -29,7 +29,7 @@ package org.springdoc.webflux.api;
 import java.util.Locale;
 import java.util.Optional;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JacksonException;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.commons.lang3.StringUtils;
 import org.springdoc.core.customizers.SpringDocCustomizers;
