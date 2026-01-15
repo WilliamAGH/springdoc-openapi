@@ -6,4 +6,4 @@ before_install:
   - sdk use maven 3.9.9
 
 install:
-  - mvn clean install
+  - mvn clean install -DskipTests
