@@ -26,9 +26,9 @@
 
 package org.springdoc.core.providers;
 
-import com.fasterxml.jackson.databind.MapperFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import java.io.IOException;
+import java.util.List;
+
 import io.swagger.v3.core.util.Json;
 import io.swagger.v3.core.util.Json31;
 import io.swagger.v3.core.util.ObjectMapperFactory;
@@ -36,6 +36,13 @@ import io.swagger.v3.core.util.Yaml;
 import io.swagger.v3.core.util.Yaml31;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.media.Schema;
+import io.swagger.v3.oas.models.servers.Server;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
 import org.springdoc.core.mixins.SortedOpenAPIMixin;
 import org.springdoc.core.mixins.SortedOpenAPIMixin31;
 import org.springdoc.core.mixins.SortedSchemaMixin;
@@ -45,8 +52,14 @@ import org.springdoc.core.properties.SpringDocConfigProperties.ApiDocs.OpenApiVe
 
 /**
  * The type Spring doc object mapper provider.
+ * Provides Jackson version-agnostic methods for JSON operations.
  */
 public class ObjectMapperProvider extends ObjectMapperFactory {
+
+	/**
+	 * The constant LOGGER.
+	 */
+	private static final Logger LOGGER = LoggerFactory.getLogger(ObjectMapperProvider.class);
 
 	/**
 	 * The Json mapper.
@@ -151,5 +164,43 @@ public class ObjectMapperProvider extends ObjectMapperFactory {
 	 */
 	public boolean isOpenapi31() {
 		return springDocConfigProperties.isOpenapi31();
+	}
+
+	/**
+	 * Clone a Schema via JSON serialization/deserialization.
+	 * This method abstracts Jackson version-specific TypeReference usage.
+	 *
+	 * @param source the source schema to clone
+	 * @return the cloned schema, or the source if cloning fails
+	 */
+	public Schema<?> cloneSchema(Schema<?> source) {
+		if (source == null) return null;
+		try {
+			JavaType schemaType = jsonMapper.constructType(Schema.class);
+			return jsonMapper.readValue(jsonMapper.writeValueAsBytes(source), schemaType);
+		}
+		catch (IOException e) {
+			LOGGER.warn("Json Processing Exception occurred while cloning Schema: {}", e.getMessage());
+			return source;
+		}
+	}
+
+	/**
+	 * Clone a List of Servers via JSON serialization/deserialization.
+	 * This method abstracts Jackson version-specific TypeReference usage.
+	 *
+	 * @param source the source list to clone
+	 * @return the cloned list, or the source if cloning fails
+	 */
+	public List<Server> cloneServers(List<Server> source) {
+		if (source == null) return null;
+		try {
+			JavaType listType = jsonMapper.getTypeFactory().constructCollectionType(List.class, Server.class);
+			return jsonMapper.readValue(jsonMapper.writeValueAsBytes(source), listType);
+		}
+		catch (IOException e) {
+			LOGGER.warn("Json Processing Exception occurred while cloning Servers: {}", e.getMessage());
+			return source;
+		}
 	}
 }

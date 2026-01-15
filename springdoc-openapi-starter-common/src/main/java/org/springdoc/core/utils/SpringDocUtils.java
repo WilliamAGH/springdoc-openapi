@@ -32,9 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.core.converter.AnnotatedType;
+import tools.jackson.databind.ObjectMapper;
 import io.swagger.v3.core.util.PrimitiveType;
 import io.swagger.v3.oas.models.media.ComposedSchema;
 import io.swagger.v3.oas.models.media.Content;
@@ -588,28 +587,6 @@ public class SpringDocUtils {
 		if (source == null) return null;
 		try {
 			return mapper.readValue(mapper.writeValueAsBytes(source), targetType);
-		}
-		catch (IOException e) {
-			LOGGER.warn("Json Processing Exception occurred: {}", e.getMessage());
-			@SuppressWarnings("unchecked")
-			T fallback = (T) source;
-			return fallback;
-		}
-	}
-
-	/**
-	 * Clone via json t.
-	 *
-	 * @param <T>     the type parameter
-	 * @param source  the source
-	 * @param typeRef the type ref
-	 * @param mapper  the mapper
-	 * @return the t
-	 */
-	public static  <T> T cloneViaJson(Object source, TypeReference<T> typeRef, ObjectMapper mapper) {
-		if (source == null) return null;
-		try {
-			return mapper.readValue(mapper.writeValueAsBytes(source), typeRef);
 		}
 		catch (IOException e) {
 			LOGGER.warn("Json Processing Exception occurred: {}", e.getMessage());

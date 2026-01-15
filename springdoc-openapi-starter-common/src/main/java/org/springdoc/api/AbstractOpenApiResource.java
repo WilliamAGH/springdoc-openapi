@@ -58,11 +58,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import com.fasterxml.jackson.dataformat.yaml.YAMLGenerator.Feature;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.dataformat.yaml.YAMLFactory;
+import tools.jackson.dataformat.yaml.YAMLGenerator.Feature;
 import io.swagger.v3.core.filter.SpecFilter;
 import io.swagger.v3.core.util.ReflectionUtils;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -135,7 +134,6 @@ import static org.springdoc.core.utils.Constants.ACTUATOR_DEFAULT_GROUP;
 import static org.springdoc.core.utils.Constants.DOT;
 import static org.springdoc.core.utils.Constants.OPERATION_ATTRIBUTE;
 import static org.springdoc.core.utils.Constants.SPRING_MVC_SERVLET_PATH;
-import static org.springdoc.core.utils.SpringDocUtils.cloneViaJson;
 import static org.springframework.util.AntPathMatcher.DEFAULT_PATH_SEPARATOR;
 
 /**
@@ -408,7 +406,7 @@ public abstract class AbstractOpenApiResource extends SpecFilter {
 
 				// run the optional customizers
 				List<Server> servers = openAPI.getServers();
-				List<Server> serversCopy = cloneViaJson(servers,  new TypeReference<List<Server>>() {},  springDocProviders.jsonMapper());
+				List<Server> serversCopy = springDocProviders.getObjectMapperProvider().cloneServers(servers);
 
 				openAPIService.getContext().getBeansOfType(OpenApiLocaleCustomizer.class).values().forEach(openApiLocaleCustomizer -> openApiLocaleCustomizer.customise(openAPI, finalLocale));
 				springDocCustomizers.getOpenApiCustomizers().ifPresent(apiCustomizers -> apiCustomizers.forEach(openApiCustomizer -> openApiCustomizer.customise(openAPI)));

@@ -27,7 +27,7 @@ package org.springdoc.core.providers;
 
 import java.util.Optional;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * The type Spring doc providers.
@@ -165,5 +165,14 @@ public class SpringDocProviders {
 	 */
 	public ObjectMapper yamlMapper() {
 		return objectMapperProvider.yamlMapper();
+	}
+
+	/**
+	 * Gets object mapper provider.
+	 *
+	 * @return the object mapper provider
+	 */
+	public ObjectMapperProvider getObjectMapperProvider() {
+		return objectMapperProvider;
 	}
 }
